@@ -8,7 +8,7 @@ library(readr)
 library(plotly)
 library(dplyr)
 
-a <- read_csv("../../ps06-shinyapps-CandiceTTt/ps06_shinyapp_Candicetttt/Numbers of threatened species by major groups of organisms (2000-2022).csv")
+a <- read_csv("dataset.csv")
 # Define UI for application that draws a histogram
 
 ui <- fluidPage(
