@@ -29,7 +29,9 @@ ui <- fluidPage(
         p("We assume people in general are all the potential targeted audiences for these set of analysis and data since we analyze this to inform the general public about the threatened animals around the world as a way to persuade them to make changes with their lifestyle
              to make a better world for both humans and animals. Some nonprofit animal shelters and environment protection organizations might also be interested in our set of data to concentrate on the urgent issues of the popularity of different species dying each day each year in different regions."),
         h2("Data Set"), 
-        p("lol where did the data set come from?"),
+        p("We will be working with the number of threatened species by major groups dataset made by the International Union for Conservation of Nature", a("(IUCN).", href='https://www.iucnredlist.org/resources/summary-statistics#Summary%20Tables'),
+        "The dataset includes data from 2000 to 2022 and records the total number of assessed and threatened species, in total of 22 species and 29 variables are included. Some variables are included but not limited to: Mammals, Birds, Reptiles, Green algae, Mushrooms, Corals, etc. 
+In this report, we are creating a more organized visual table and graph that shows the trend/changes in total threatened species from 2000 to 2022."),
         ## textOutput("text"))
     )
     ),
