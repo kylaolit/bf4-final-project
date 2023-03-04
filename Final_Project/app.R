@@ -72,6 +72,10 @@ In this report, we are creating a more organized visual table and graph that sho
     ),
     
     tabPanel(
+      "Comparison between 2000 and 2022",
+    ),
+    
+    tabPanel(
       "Species in Major Groups",
       sidebarLayout(
         sidebarPanel(
@@ -91,6 +95,9 @@ In this report, we are creating a more organized visual table and graph that sho
           
         )
       )
+    ),
+    tabPanel(
+      "Conclusion"
     )
 )
 )
