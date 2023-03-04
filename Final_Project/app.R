@@ -20,7 +20,7 @@ ui <- fluidPage(
       mainPanel(
         img(alt = "Animals", 
             src = "https://media.cntraveller.com/photos/611befdcdb797d0116fd4d86/16:9/w_3200,h_1800,c_limit/end.jpg",
-            src="src", height="50%", width="50%", align="center"),
+            src="src", height="65%", width="65%", align="center"),
         h1("Project Overview"),
         p("The report provides a broad summary of threatened animals to be endangered within the 2000 - 2022.
              With the data, we hope to display the different animals and how likely they are to be endangered within the years. 
@@ -30,13 +30,14 @@ ui <- fluidPage(
              to make a better world for both humans and animals. Some nonprofit animal shelters and environment protection organizations might also be interested in our set of data to concentrate on the urgent issues of the popularity of different species dying each day each year in different regions."),
         h2("Data Set"), 
         p("lol where did the data set come from?"),
-        textOutput("text"))
+        ## textOutput("text"))
+    )
     ),
       
   
     
     tabPanel(
-      "Plot",
+      "Assessed & Threatened Species Over Time",
       sidebarLayout(
         sidebarPanel(
           p("You can analyze the threatened animals of different kinds. 
@@ -61,7 +62,7 @@ ui <- fluidPage(
     ),
     
     tabPanel(
-      "Table",
+      "Species in Major Groups",
       sidebarLayout(
         sidebarPanel(
           p("This panel displays the data about threatened animals 
@@ -81,13 +82,13 @@ ui <- fluidPage(
         )
       )
     )
-  )
+)
 )
 
 
 
 server <- function(input, output) {
-  output$text <- renderText()
+  ## output$text <- renderText({})
   
   output$plot <- renderPlot({
     k <- input$kind
@@ -95,9 +96,13 @@ server <- function(input, output) {
     
     ggplot(data = a,(aes(Year, a[[k]], color = Category)))+
       geom_point()+
-      geom_line()+
+      geom_line(size=1.5)+
       scale_color_brewer(palette = palette)+
-      labs(x = "Year", y = "Numbers")
+      labs(x = "Year", y = "Numbers")+
+      theme(
+        axis.line = element_line(size = 0.6),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16))
   })
   
   output$text1 <- renderText({
