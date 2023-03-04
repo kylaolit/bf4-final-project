@@ -33,11 +33,14 @@ ui <- fluidPage(
         "The dataset includes data from 2000 to 2022 and records the total number of assessed and threatened species, in total of 22 species and 29 variables are included. Some variables are included but not limited to: Mammals, Birds, Reptiles, Green algae, Mushrooms, Corals, etc. 
 In this report, we are creating a more organized visual table and graph that shows the trend/changes in total threatened species from 2000 to 2022."),
         h2("Focus"),
-        p("The trend of threatened species over time periods, whether there is an increase or decrease,
-          Organization of specific species falling under each major group (4 major groups)"),
+        tags$ul(
+          tags$li("The trend of threatened species over time periods, whether there is an increase or decrease
+"),
+          tags$li("Organization of specific species falling under each major group (4 major groups)
+"),
+        ),
         h2("Creators"),
-        p("By:  Lisa Lu, Xintong Chen, Kyla Olitoquit, Anika Razdan")
-        ## textOutput("text"))
+        p("By:  Lisa Lu, Xintong Chen, Kyla Olitoquit, Anika Razdan"),
     )
     ),
       
