@@ -10,6 +10,25 @@ library(dplyr)
 
 a <- read_csv("dataset.csv")
 # Define UI for application that draws a histogram
+ui <- fluidPage(
+  selectInput("animal","select a species type",choices = names(df)[3:28]),
+  selectInput("category","select a category type",choices= unique(df$X.1)),
+  plotOutput('Hist')
+)
+server <- function(input, output, session) {
+  data1 <- reactive({
+    subset(df,X.1==input$category) %>%
+      pull(input$animal)
+  })
+  
+  output$Hist <- renderPlot({
+  hist(data1(),breaks=10, main=paste("Histogram of",input$animal),
+       xlab="number of species")
+  }) 
+  
+}
+
+
 
 ui <- fluidPage(
   titlePanel("Past Years Threatened Animals"),
