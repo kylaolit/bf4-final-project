@@ -6,6 +6,7 @@ library(tidyverse)
 library(stringr)
 library(readr)
 library(dplyr)
+library(htmltools)
 
 
 a <- read_csv("dataset.csv") 
@@ -109,9 +110,32 @@ In this report, we are creating a more organized visual table and graph that sho
     ),
     tabPanel(
       "Conclusion",
+      sidebarLayout(
+        sidebarPanel(
+          selectInput("kind2",
+                      "Choose a kind of animal",
+                      choices = c("Mammals","Birds","Reptiles","Amphibians","Fishes",
+                                  "Subtotal_Vertebrates","Insects","Molluscs","Crustaceans","Corals","Arachnids","Velvet_worms",
+                                  "Horseshoe_crabs","Other_invertebrates","Subtotal_Invertebrates","Mosses","Ferns_and_allies",
+                                  "Gymnosperms","Flowering_plants","Green_algae","Red_algae","Subtotal_Plants","Lichens",
+                                  "Mushrooms","Brown_algae","Subtotal_Fungi_and_protists","Total"))
+          ),
+        mainPanel(
+          img(alt = "Conclusion", 
+              src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iucnredlist.org%2Fresources%2Fsummary-statistics&psig=AOvVaw3ce4i1A6m7BBBBzzskFF3m&ust=1678231564548000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCMjt_vO5yP0CFQAAAAAdAAAAABAE",
+              src="src", height="50%", width="50%", align="left"),
+          tableOutput("table3"),
+          tags$ul(
+            tags$li("The dataset is reasonable and unbiased in a way that records the number of assessed and threatened species. We don’t see a potential population group that might be harmed but we are here to appeal to the public to protect the environment so that we all can provide better living conditions for all living beings.
+"),
+            tags$li("One way to advance this project could be by collecting data on the specific factors influencing animal species to be threatened over the years. By examining the animal species, and what causes are making them threatened over the years, this will allow scientists to have a better grasp. It will also aid them to help the variety of these species, and get their population numbers back up, and less animal species will be threatened overall. 
+")
+          )
+        )
+        )
+      )
       
     )
-)
 )
 
 
@@ -187,6 +211,15 @@ server <- function(input, output) {
     hist(data1(),breaks=10, main=paste("Histogram of",input$animal),
          xlab="Number of species")
   }) 
+  
+  output$table3 <- renderTable({
+    k2 <- input$kind2 
+    a %>% 
+      filter(Year == 2022 | Year == 2000) %>% 
+      select(Year, Category, k2) %>% 
+      arrange(Year)
+  })
+
 }
 
 # Run the application 
