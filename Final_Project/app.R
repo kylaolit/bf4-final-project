@@ -121,9 +121,8 @@ In this report, we are creating a more organized visual table and graph that sho
                                   "Mushrooms","Brown_algae","Subtotal_Fungi_and_protists","Total"))
           ),
         mainPanel(
-          img(alt = "Conclusion", 
-              src = "https://media.cnn.com/api/v1/images/stellar/prod/221209170900-dugong-file.jpg?c=original",
-              src="src", height="65%", width="65%", align="center"),
+          img(src = "http://images5.fanpop.com/image/photos/26300000/Panda-Gif-pandas-26334363-500-280.gif",
+              height="250px", width="500px", align="center"),
           tableOutput("table3"),
           tags$ul(
             tags$li("The dataset is reasonable and unbiased in a way that records the number of assessed and threatened species. We don’t see a potential population group that might be harmed but we are here to appeal to the public to protect the environment so that we all can provide better living conditions for all living beings.
