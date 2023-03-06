@@ -5,31 +5,15 @@ library(shiny)
 library(tidyverse)
 library(stringr)
 library(readr)
-library(plotly)
 library(dplyr)
 
 
-a <- read_csv("dataset.csv",skip= 1) %>%
-mutate(across(c(3:11,17,20,21,24),parse_number))
+a <- read_csv("dataset.csv") 
 
 
 ui <- fluidPage(
-  selectInput("animal","select a species type",choices = names(a)[3:28]),
-  selectInput("category","select a category type",choices= unique(a$Category)),
-  plotOutput('Hist')
-)
-server <- function(input, output, session) {
-  data1 <- reactive({
-    subset(a,Category==input$category) %>%
-      pull(input$animal)
-  })
-  
-  output$Hist <- renderPlot({
-  hist(data1(),breaks=10, main=paste("Histogram of",input$animal),
-       xlab="number of species")
-  }) 
-  
-}
+ 
+
   titlePanel("Past Years Threatened Animals"),
   
   tabsetPanel(
@@ -91,6 +75,15 @@ In this report, we are creating a more organized visual table and graph that sho
     
     tabPanel(
       "Comparison between 2000 and 2022",
+      sidebarLayout(
+        sidebarPanel(
+      selectInput("animal","select a species type",choices = names(a)[3:28]),
+      selectInput("category","select a category type",choices= unique(a$Category)))
+      ,
+      mainPanel(
+      plotOutput('Hist')
+    )
+    )
     ),
     
     tabPanel(
@@ -115,10 +108,12 @@ In this report, we are creating a more organized visual table and graph that sho
       )
     ),
     tabPanel(
-      "Conclusion"
+      "Conclusion",
+      
     )
 )
 )
+
 
 
 
@@ -182,6 +177,16 @@ server <- function(input, output) {
       paste("Increase of the total threatened (2000-2022): 294-0 = ", 294)
     }
   })
+  
+  data1 <- reactive({
+    subset(a,Category==input$category) %>%
+      pull(input$animal)
+  })
+  
+  output$Hist <- renderPlot({
+    hist(data1(),breaks=10, main=paste("Histogram of",input$animal),
+         xlab="Number of species")
+  }) 
 }
 
 # Run the application 
