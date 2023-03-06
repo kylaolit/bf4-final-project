@@ -8,18 +8,19 @@ library(readr)
 library(plotly)
 library(dplyr)
 
+
 a <- read_csv("dataset.csv",skip= 1) %>%
 mutate(across(c(3:11,17,20,21,24),parse_number))
 
-# Define UI for application that draws a histogram
+
 ui <- fluidPage(
-  selectInput("animal","select a species type",choices = names(df)[3:28]),
-  selectInput("category","select a category type",choices= unique(df$Category)),
+  selectInput("animal","select a species type",choices = names(a)[3:28]),
+  selectInput("category","select a category type",choices= unique(a$Category)),
   plotOutput('Hist')
 )
 server <- function(input, output, session) {
   data1 <- reactive({
-    subset(df,Category==input$category) %>%
+    subset(a,Category==input$category) %>%
       pull(input$animal)
   })
   
@@ -29,10 +30,6 @@ server <- function(input, output, session) {
   }) 
   
 }
-
-
-
-ui <- fluidPage(
   titlePanel("Past Years Threatened Animals"),
   
   tabsetPanel(
