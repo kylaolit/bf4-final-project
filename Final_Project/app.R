@@ -75,9 +75,11 @@ In this report, we are creating a more organized visual table and graph that sho
     ),
     
     tabPanel(
-      "Comparison between 2000 and 2022",
+      "Range of Numbers of Species",
       sidebarLayout(
         sidebarPanel(
+          p("You can manipulate the histogram plot by using the dropdown menu to choose the type of animal species from the list below. Also, there is the option to examine the animal species from species assessed versus species threatened. When you use it, the histogram plot and bars will appear, showing the different ranges and frequencies of the variety of animal species examined in the dataset." 
+),
       selectInput("animal","select a species type",choices = names(a)[3:28]),
       selectInput("category","select a category type",choices= unique(a$Category)))
       ,
