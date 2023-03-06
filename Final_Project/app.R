@@ -122,8 +122,8 @@ In this report, we are creating a more organized visual table and graph that sho
           ),
         mainPanel(
           img(alt = "Conclusion", 
-              src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iucnredlist.org%2Fresources%2Fsummary-statistics&psig=AOvVaw3ce4i1A6m7BBBBzzskFF3m&ust=1678231564548000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCMjt_vO5yP0CFQAAAAAdAAAAABAE",
-              src="src", height="50%", width="50%", align="left"),
+              src = "https://media.cnn.com/api/v1/images/stellar/prod/221209170900-dugong-file.jpg?c=original",
+              src="src", height="65%", width="65%", align="center"),
           tableOutput("table3"),
           tags$ul(
             tags$li("The dataset is reasonable and unbiased in a way that records the number of assessed and threatened species. We don’t see a potential population group that might be harmed but we are here to appeal to the public to protect the environment so that we all can provide better living conditions for all living beings.
