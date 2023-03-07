@@ -127,6 +127,10 @@ In this report, we are creating a more organized visual table and graph that sho
               height="250px", width="500px", align="center"),
           tableOutput("table3"),
           tags$ul(
+            tags$li("One of the notable patterns we discovered in our project was that as the years go by, the two data (being total assessed and total threatened) had a big difference with how each total increases as the years go by. For example, the line plot data for mammals. The total number of generally assessed animals dramatically increased within the years of 2000 to 2005, then kept increasing after 2005. As for the total threatened animals line plot, there was a little increase, but not as dramatic as the total number of assessed animals. But when looking at all the different animals, both of the total assessed and total threatened are increasing.
+"),
+            tags$li("Another example was the histogram. Similar to the line plot, it shows the frequency of how many animals were assessed and threatened, and there’s a clear trend that most of the threat is increasing depending if it were threatened or assessed. 
+"),
             tags$li("The dataset is reasonable and unbiased in a way that records the number of assessed and threatened species. We don’t see a potential population group that might be harmed but we are here to appeal to the public to protect the environment so that we all can provide better living conditions for all living beings.
 "),
             tags$li("One way to advance this project could be by collecting data on the specific factors influencing animal species to be threatened over the years. By examining the animal species, and what causes are making them threatened over the years, this will allow scientists to have a better grasp. It will also aid them to help the variety of these species, and get their population numbers back up, and less animal species will be threatened overall. 
