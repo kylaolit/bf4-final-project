@@ -69,7 +69,7 @@ In this Web App, we are developing a more organized visual table and graph that 
         mainPanel(
           plotOutput("plot"),
           h3("As time goes on, the total number of threatened species increases. In addition, the increase in the total number of threatened is associates with the increase in total number of assessed."),
-          textOutput("text1")
+          h4(textOutput("text1"))
           )
       )
     ),
@@ -84,9 +84,11 @@ In this Web App, we are developing a more organized visual table and graph that 
       selectInput("category","Select category type",choices= unique(a$Category)))
       ,
       mainPanel(
-      h2("The average frequencies of ranges for the all the animal species had an average of 9.2
+      plotOutput('Hist'),
+      h3("When looking at the histogram, there is a correlation in the histogram bars between the species assessed and species threatened. When looking at species assessed, the bars are lower, but when looking at species threatened, the bars rise higher. This is due to the fact over time, the amount of animal species that are threatened continue to increase and rise over the years. 
 "),
-      plotOutput('Hist')
+      h4("The average frequencies of ranges for the all the animal species had an average of 9.2
+"),
     )
     )
     ),
