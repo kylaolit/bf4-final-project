@@ -69,8 +69,9 @@ In this report, we are creating a more organized visual table and graph that sho
         ),
         mainPanel(
           plotOutput("plot"),
+          h3("As time goes on, total number of threatened species increases. In addition, the increase of total number of threatened is also associated when there is an increase in total number of assessed."),
           textOutput("text1")
-        )
+          )
       )
     ),
     
