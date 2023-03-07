@@ -25,16 +25,15 @@ ui <- fluidPage(
             src = "https://media.cntraveller.com/photos/611befdcdb797d0116fd4d86/16:9/w_3200,h_1800,c_limit/end.jpg",
             src="src", height="65%", width="65%", align="center"),
         h1("Project Overview"),
-        p("The report provides a broad summary of threatened animals to be endangered within the 2000 - 2022.
-             With the data, we hope to display the different animals and how likely they are to be endangered within the years. 
-               We also hope to display the different types of threatened organisms which includes plants and fungi."),
+        p("The report provides a broad summary of threatened animals to be endangered throughout the years 2000 - 2022.
+             With the data, we hope to display different animals, organisms such as plants and fungi, and how likely they are to be endangered within the years.") ,
         h2("Audience"),
-        p("We assume people in general are all the potential targeted audiences for these set of analysis and data since we analyze this to inform the general public about the threatened animals around the world as a way to persuade them to make changes with their lifestyle
-             to make a better world for both humans and animals. Some nonprofit animal shelters and environment protection organizations might also be interested in our set of data to concentrate on the urgent issues of the popularity of different species dying each day each year in different regions."),
+        p("We assume that people in general are the potential audiences for this dataset and analysis. Since the purpose of this analysis is to inform the general public about the global threat to species and to persuade them to make changes with their lifestyle
+             to make a better world for both humans and animals. Another set of audience that would be interested in this dataset would be some nonprofit animal shelters and environment protection organizations with the concentrate on the urgent issues of trend within different species dying each day and year in different regions."),
         h2("Data Set"), 
         p("We will be working with the number of threatened species by major groups dataset made by the International Union for Conservation of Nature", a("(IUCN).", href='https://www.iucnredlist.org/resources/summary-statistics#Summary%20Tables'),
-        "The dataset includes data from 2000 to 2022 and records the total number of assessed and threatened species, in total of 22 species and 29 variables are included. Some variables are included but not limited to: Mammals, Birds, Reptiles, Green algae, Mushrooms, Corals, etc. 
-In this report, we are creating a more organized visual table and graph that shows the trend/changes in total threatened species from 2000 to 2022."),
+        "The dataset includes data from 2000 to 2022 and records the total number of assessed and threatened species, a total of 22 species and 29 variables are included. Some variables are included but not limited to: Mammals, Birds, Reptiles, Green algae, Mushrooms, Corals, etc. 
+In this Web App, we are developing a more organized visual table and graph that shows the trend and/or changes in total threatened species from 2000 to 2022."),
         h2("Focus"),
         tags$ul(
           tags$li("The trend of threatened species over time periods, whether there is an increase or decrease
@@ -69,20 +68,20 @@ In this report, we are creating a more organized visual table and graph that sho
         ),
         mainPanel(
           plotOutput("plot"),
-          h3("As time goes on, total number of threatened species increases. In addition, the increase of total number of threatened is also associated when there is an increase in total number of assessed."),
+          h3("As time goes on, the total number of threatened species increases. In addition, the increase in the total number of threatened is associates with the increase in total number of assessed."),
           textOutput("text1")
           )
       )
     ),
     
     tabPanel(
-      "Range of Numbers of Species",
+      "Numbers of Species Range",
       sidebarLayout(
         sidebarPanel(
-          p("You can manipulate the histogram plot by using the dropdown menu to choose the type of animal species from the list below. Also, there is the option to examine the animal species from species assessed versus species threatened. When you use it, the histogram plot and bars will appear, showing the different ranges and frequencies of the variety of animal species examined in the dataset." 
+          p("You can manipulate the histogram plot by using the dropdown menu to choose the type of specie from the options below. There is also the option to examine the species from assessed versus threatened. When utilizing, histogram plot and bars will appear, showing different ranges and frequencies of animal species variety examined in the dataset." 
 ),
-      selectInput("animal","select a species type",choices = names(a)[3:28]),
-      selectInput("category","select a category type",choices= unique(a$Category)))
+      selectInput("animal","Select species type",choices = names(a)[3:28]),
+      selectInput("category","Select category type",choices= unique(a$Category)))
       ,
       mainPanel(
       plotOutput('Hist')
@@ -94,7 +93,7 @@ In this report, we are creating a more organized visual table and graph that sho
       "Species in Major Groups",
       sidebarLayout(
         sidebarPanel(
-          p("This panel displays the data about threatened animals 
+          p("This panel displays the data about threatened species 
           over different groups of organisms: 
             vertebrates, invertebrates, plants, and fungi&protists"),
           radioButtons("choice","Choose an option:",
@@ -128,13 +127,13 @@ In this report, we are creating a more organized visual table and graph that sho
               height="250px", width="500px", align="center"),
           tableOutput("table3"),
           tags$ul(
-            tags$li("One of the notable patterns we discovered in our project was that as the years go by, the two data (being total assessed and total threatened) had a big difference with how each total increases as the years go by. For example, the line plot data for mammals. The total number of generally assessed animals dramatically increased within the years of 2000 to 2005, then kept increasing after 2005. As for the total threatened animals line plot, there was a little increase, but not as dramatic as the total number of assessed animals. But when looking at all the different animals, both of the total assessed and total threatened are increasing.
+            tags$li("One of the notable patterns we discovered in our project was that as the years go by, the two data (", em("total assessed"), "and ", em("total threatened"), "had a big difference with how each total increases as the years go by. For example, the ", strong("line plot"), "data for ", strong("Mammals"), ". The total number of generally assessed animals dramatically increased within the years 2000 to 2005, then kept increasing after 2005. As for the total threatened animals line plot, there was an increase, but not as dramatic as the total number of assessed animals. But when looking at all the different animals, both of the total assessed and total threatened are increasing.
 "),
-            tags$li("Another example was the histogram. Similar to the line plot, it shows the frequency of how many animals were assessed and threatened, and there’s a clear trend that most of the threat is increasing depending if it were threatened or assessed. 
+            tags$li("Another example was the ", strong("histogram"), ". Similar to the line plot, it shows the frequency of how many animals were assessed and threatened, and there’s a clear trend that most of the threat is increasing depending if it were threatened or assessed. 
 "),
-            tags$li("The dataset is reasonable and unbiased in a way that records the number of assessed and threatened species. We don’t see a potential population group that might be harmed but we are here to appeal to the public to protect the environment so that we all can provide better living conditions for all living beings.
+            tags$li("The dataset is reasonable and unbiased in a way that it records the number of assessed and threatened species. We don’t see a potential population group that might be harmed but we are here to appeal to the public to protect the environment so that we can all provide a better living conditions for all living beings.
 "),
-            tags$li("One way to advance this project could be by collecting data on the specific factors influencing animal species to be threatened over the years. By examining the animal species, and what causes are making them threatened over the years, this will allow scientists to have a better grasp. It will also aid them to help the variety of these species, and get their population numbers back up, and less animal species will be threatened overall. 
+            tags$li("One way to advance this project could be by collecting data on the specific factors influencing animal species to be threatened over the years. By examining the species, and the causes behind what is making them threatened over the years, this will allow scientists to have a better grasp. It will also aid them to help the variety of these species, and get their population numbers back up, and less animal species will be threatened overall. 
 ")
           )
         )
