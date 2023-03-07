@@ -84,6 +84,8 @@ In this Web App, we are developing a more organized visual table and graph that 
       selectInput("category","Select category type",choices= unique(a$Category)))
       ,
       mainPanel(
+      h2("The average frequencies of ranges for the all the animal species had an average of 9.2
+"),
       plotOutput('Hist')
     )
     )
