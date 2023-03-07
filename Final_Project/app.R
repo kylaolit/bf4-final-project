@@ -64,8 +64,8 @@ In this report, we are creating a more organized visual table and graph that sho
                                   "Gymnosperms","Flowering_plants","Green_algae","Red_algae","Subtotal_Plants","Lichens",
                                   "Mushrooms","Brown_algae","Subtotal_Fungi_and_protists","Total")),
           selectInput("palette", "Select a color palette:",
-                      choices = c("Dark" = "Dark2",
-                                  "Bright" = "Set1", "Pastel" = "Pastel1")),
+                      choices = c("Pastel" = "Pastel1", "Dark" = "Dark2",
+                                  "Bright" = "Set1")),
         ),
         mainPanel(
           plotOutput("plot"),
@@ -213,7 +213,7 @@ server <- function(input, output) {
   })
   
   output$Hist <- renderPlot({
-    hist(data1(),breaks=10, main=paste("Histogram of",input$animal),
+    hist(data1(),breaks=10, col = "powderblue", main=paste("Histogram of",input$animal),
          xlab="Number of species")
   }) 
   
