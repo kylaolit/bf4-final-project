@@ -1,6 +1,3 @@
-
-## hiiiiiiii
-
 library(shiny)
 library(tidyverse)
 library(stringr)
@@ -14,9 +11,11 @@ a <- read_csv("dataset.csv")
 
 ui <- fluidPage(
  
-
+## Title of the project
   titlePanel("Past Years Threatened Animals"),
-  
+
+## division of the pages
+## image inserted, headings, and subpoints
   tabsetPanel(
     tabPanel(
       "Home",
@@ -47,11 +46,12 @@ In this Web App, we are developing a more organized visual table and graph that 
     ),
       
   
-    
+## another page    
     tabPanel(
       "Assessed & Threatened Species Over Time",
       sidebarLayout(
         sidebarPanel(
+## sidebar options for you to choose: contains all species
           p("You can analyze the threatened animals of different kinds. 
           Select the kind you are interested in. 
             You will see an anually plot and the corresponding trend lines."),
@@ -67,13 +67,14 @@ In this Web App, we are developing a more organized visual table and graph that 
                                   "Bright" = "Set1")),
         ),
         mainPanel(
+## Output shown: plot and summaries
           plotOutput("plot"),
           h3("As time goes on, the total number of threatened species increases. In addition, the increase in the total number of threatened is associates with the increase in total number of assessed."),
           h4(textOutput("text1"))
           )
       )
     ),
-    
+## Another page    
     tabPanel(
       "Numbers of Species Range",
       sidebarLayout(
@@ -84,6 +85,7 @@ In this Web App, we are developing a more organized visual table and graph that 
       selectInput("category","Select category type",choices= unique(a$Category)))
       ,
       mainPanel(
+## histogram shown and summaries comes after
       plotOutput('Hist'),
       h3("When looking at the histogram, there is a correlation in the histogram bars between the species assessed and species threatened. When looking at species assessed, the bars are lower, but when looking at species threatened, the bars rise higher. This is due to the fact over time, the amount of animal species that are threatened continue to increase and rise over the years. 
 "),
@@ -92,7 +94,7 @@ In this Web App, we are developing a more organized visual table and graph that 
     )
     )
     ),
-    
+## Another page  
     tabPanel(
       "Species in Major Groups",
       sidebarLayout(
@@ -107,6 +109,7 @@ In this Web App, we are developing a more organized visual table and graph that 
                          "Fungi & Protists" = "f")
           )
         ),
+## Table and summary shown
         mainPanel(
           textOutput("text2"),
           tableOutput("table2")
@@ -114,10 +117,12 @@ In this Web App, we are developing a more organized visual table and graph that 
         )
       )
     ),
+## Last page to summarize
     tabPanel(
       "Conclusion",
       sidebarLayout(
         sidebarPanel(
+## Sidebar included all the species as options for audience to choose
           selectInput("kind2",
                       "Choose a kind of animal",
                       choices = c("Mammals","Birds","Reptiles","Amphibians","Fishes",
@@ -126,6 +131,7 @@ In this Web App, we are developing a more organized visual table and graph that 
                                   "Gymnosperms","Flowering_plants","Green_algae","Red_algae","Subtotal_Plants","Lichens",
                                   "Mushrooms","Brown_algae","Subtotal_Fungi_and_protists","Total"))
           ),
+## gif inserted, table and bullet points as summaries are shown
         mainPanel(
           img(src = "http://images5.fanpop.com/image/photos/26300000/Panda-Gif-pandas-26334363-500-280.gif",
               height="250px", width="500px", align="center"),
@@ -152,7 +158,7 @@ In this Web App, we are developing a more organized visual table and graph that 
 
 server <- function(input, output) {
   ## output$text <- renderText({})
-  
+## server for plot  
   output$plot <- renderPlot({
     k <- input$kind
     palette <- input$palette
@@ -167,12 +173,12 @@ server <- function(input, output) {
         axis.text = element_text(size = 14),
         axis.title = element_text(size = 16))
   })
-  
+## server for interactive text summarizing the average total number of threatened for each species  
   output$text1 <- renderText({
     paste("The average number of threatened ", input$kind, "from 2000 to 2022 is: ", 
           mean(a[[input$kind]][a$Category == "Total threatened"]))
   })
-  
+## Server for the table  
   output$table2 <- renderTable({
     c <- input$choice
     if(c == "v"){
@@ -194,7 +200,7 @@ server <- function(input, output) {
         select(Year, Category, Lichens,Mushrooms,Brown_algae,Subtotal_Fungi_and_protists)
     }
   })
-  
+## Server for caculating the difference between 2022 and 2000  
   output$text2 <- renderText({
     c <- input$choice
     if(c == "v"){
@@ -215,12 +221,12 @@ server <- function(input, output) {
     subset(a,Category==input$category) %>%
       pull(input$animal)
   })
-  
+## Server for histogram showing the frequency of number of ranges  
   output$Hist <- renderPlot({
     hist(data1(),breaks=10, col = "powderblue", main=paste("Histogram of",input$animal),
          xlab="Number of species")
   }) 
-  
+## Server for table in the last page, only shows stats from 2000 and 2022 by each species  
   output$table3 <- renderTable({
     k2 <- input$kind2 
     a %>% 
